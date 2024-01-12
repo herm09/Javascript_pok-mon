@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <header>
+        <ul>
+            <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+            <li><a href="index.html" id="MonHeader">Home</a></li>
+            <li><a href="panier.html" id="MonHeader">Mon panier</a></li>
+        </ul>
+    </header>
+
+    <div id="infosPoke">
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const pokemonName = params.get('name');
+
+            fetch('https://pokeapi.co/api/v2/pokemon/' + pokemonName)
+                .then((response) => response.json())
+                .then((pokemonData) => {
+                    const infosPoke = document.getElementById('infosPoke');
+                    infosPoke.innerHTML = `
+                        <h2>${pokemonData.name}</h2>
+                        <img src="${pokemonData.sprites.front_default}" />
+                        <p>Height: ${pokemonData.height}</p>
+                        <p>Weight: ${pokemonData.weight}</p>
+                        <ul id="statsList"></ul>
+                    `;
+
+                    const statsList = document.getElementById('statsList');
+                    pokemonData.stats.forEach((stat) => {
+                        const li = document.createElement('li');
+                        li.textContent = stat.stat.name + ': ' + stat.base_stat;
+                        statsList.appendChild(li);
+                    });
+                });
+        });
+        </script>
+    </div>
+</body>
+</html>

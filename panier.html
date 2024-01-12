@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <header>
+        <ul>
+            <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+            <li><a href="index.html" id="MonHeader">Home</a></li>
+            <li><a href="panier.html" id="MonHeader">Mon panier</a></li>
+        </ul>
+    </header>
+
+    <div id="cartContainer">
+
+    </div>
+
+    <!-- <script>
+        window.onload = function() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContainer = document.querySelector('#cart');
+
+            cart.forEach((pokemon) => {
+                const h3 = document.createElement('h3');
+                const img = document.createElement('img');
+
+                h3.textContent = pokemon.name;
+                img.src = pokemon.sprites.front_default;
+
+                cartContainer.appendChild(h3);
+                cartContainer.appendChild(img);
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Récupérer le panier depuis le local storage ou initialiser un nouveau panier
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Afficher les éléments du panier sur la page panier.html
+            const cartContainer = document.getElementById('cartContainer');
+
+            // Fonction pour mettre à jour l'affichage du panier
+            function updateCartDisplay() {
+                // Effacer le contenu actuel du conteneur du panier
+                cartContainer.innerHTML = '';
+
+                // Parcourir les éléments du panier et les afficher
+                cart.forEach((item) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.innerHTML = `
+                        <img src="${item.sprites.front_default}" alt="${item.name}" style="width: 50px; height: 50px;">
+                        <span>${item.name} - Price: ₽${item.price.toFixed(2)}</span>
+                        <span>Quantity: ${item.quantity}</span>
+                    `;
+                    cartContainer.appendChild(cartItem);
+                });
+            }
+
+            // Mettre à jour l'affichage initial du panier
+            updateCartDisplay();
+        });
+
+    </script> -->
+
+    <script src="script.js"></script>
+</body>
+</html>
