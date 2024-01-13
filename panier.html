@@ -21,9 +21,39 @@
         </ul>
     </header>
 
-    <div id="cartContainer">
+    <div id="cart">
 
     </div>
+
+    <script>
+        window.onload = function() {
+            // Get the cart from localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Get the cart container
+            const cartContainer = document.querySelector('#cart');
+
+            // For each Pokemon in the cart...
+            cart.forEach((pokemon) => {
+                // Create a new h3 element for the Pokemon's name
+                const h3 = document.createElement('h3');
+                h3.textContent = pokemon.name;
+
+                // Create a new img element for the Pokemon's image
+                const img = document.createElement('img');
+                img.src = pokemon.image;
+
+                // Create a new p element for the Pokemon's price
+                const p = document.createElement('p');
+                p.textContent = pokemon.price;
+
+                // Add the h3, img, and p elements to the cart container
+                cartContainer.appendChild(h3);
+                cartContainer.appendChild(img);
+                cartContainer.appendChild(p);
+            });
+        };
+    </script>
 
     <!-- <script>
         window.onload = function() {
