@@ -50,6 +50,26 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
         });
     });
 
+
+
+
+    button.onclick = function(event) {
+        event.preventDefault();
+        const pokemonName = pokemonData.name;
+        const pokemonSprites = pokemonData.sprites.front_default;
+
+        // Utilisez ces attributs pour déclencher l'événement "buy"
+        const buyEvent = new CustomEvent('buy', { 
+            detail: { 
+                pokemonName: pokemonName, 
+                pokemonSprites: pokemonSprites 
+            } 
+        });
+        document.dispatchEvent(buyEvent);
+    };
+
+
+
     document.addEventListener('DOMContentLoaded', function () {
         // Initialise le tableau de panier à partir du stockage local
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -79,7 +99,7 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
             } else {
                 cart.push({
                     name: pokemonData.name,
-                    sprites: pokemonData.sprites,
+                    sprites: pokemonData.sprites.front_default, // Correction ici pour utiliser l'image front_default du Pokémon
                     price: Math.floor(Math.random() * 100),
                     quantity: 1,
                 });
@@ -95,7 +115,13 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
         // Écoute le clic sur le bouton "buy" sur la page d'accueil
         document.getElementById('produits').addEventListener('click', function (event) {
             if (event.target.classList.contains('buy-btn')) {
-                const pokemonData = JSON.parse(event.target.getAttribute('data-pokemon'));
+                const pokemonName = event.target.getAttribute('data-pokemon-name');
+                const pokemonSprites = event.target.getAttribute('data-pokemon-sprites');
+    
+                const pokemonData = {
+                    name: pokemonName,
+                    sprites: { front_default: pokemonSprites }, // Correction ici pour utiliser l'image front_default du Pokémon
+                };
     
                 // Ajoute le nouveau Pokémon au panier
                 addToCart(pokemonData);
@@ -105,6 +131,7 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
         // Met à jour l'affichage initial du panier
         updateCartDisplay();
     });
+    
     
     
     
