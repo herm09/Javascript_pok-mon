@@ -133,12 +133,10 @@ header ul #MonHeader:hover {
 }
 #infosPoke h2 {
   font-size: 2rem;
+  font-family: "Varela Round", sans-serif;
 }
 #infosPoke img {
   width: 200px;
-}
-#infosPoke p {
-  font-size: 1.2rem;
 }
 #infosPoke ul {
   display: flex;
@@ -148,6 +146,16 @@ header ul #MonHeader:hover {
   gap: 20px;
   padding: 0;
   list-style: none;
+}
+#infosPoke #statsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+  font-family: "Varela Round", sans-serif;
 }
 
 #cart {

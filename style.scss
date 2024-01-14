@@ -149,14 +149,11 @@ header {
 
     h2 {
         font-size: 2rem;
+        font-family: 'Varela Round', sans-serif;
     }
 
     img {
         width: 200px;
-    }
-
-    p {
-        font-size: 1.2rem;
     }
 
     ul {
@@ -167,6 +164,17 @@ header {
         gap: 20px;
         padding: 0;
         list-style: none;
+    }
+
+    #statsList {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 0;
+        list-style: none;
+        font-family: 'Varela Round', sans-serif;
     }
 }
 
